@@ -115,7 +115,7 @@ export default function AssessmentTool() {
     } else {
       // Use a timestamp generator that only runs when needed
       const generateId = () => Date.now();
-      
+
       const assessmentResult = {
         id: generateId(), // Call the function here
         type: assessmentType,
@@ -123,7 +123,7 @@ export default function AssessmentTool() {
         date: new Date().toISOString(),
         answers: { ...answers }
       };
-      
+
       setAssessmentHistory([assessmentResult, ...assessmentHistory]);
       setShowResults(true);
     }
@@ -148,7 +148,7 @@ export default function AssessmentTool() {
 
   if (showResults) {
     return (
-      <Results 
+      <Results
         score={calculateScore()}
         assessmentType={assessmentType}
         assessmentHistory={assessmentHistory}
@@ -175,31 +175,29 @@ export default function AssessmentTool() {
 
       {/* Assessment Type Selector */}
       <div className="mb-8">
-        <div className="flex gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
           <button
             onClick={() => restartAssessment('depression')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              assessmentType === 'depression'
+            className={`px-4 py-2 rounded-lg transition-colors ${assessmentType === 'depression'
                 ? 'bg-primary-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
+              }`}
           >
             Depression Assessment
           </button>
           <button
             onClick={() => restartAssessment('anxiety')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              assessmentType === 'anxiety'
+            className={`px-4 py-2 rounded-lg transition-colors ${assessmentType === 'anxiety'
                 ? 'bg-primary-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
+              }`}
           >
             Anxiety Assessment
           </button>
         </div>
         <div className="p-4 bg-blue-50 rounded-lg">
           <p className="text-sm text-blue-700">
-            <strong>Disclaimer:</strong> This is not a diagnostic tool. It's a screening measure 
+            <strong>Disclaimer:</strong> This is not a diagnostic tool. It's a screening measure
             to help identify symptoms that may indicate a need for professional evaluation.
           </p>
         </div>
@@ -212,7 +210,7 @@ export default function AssessmentTool() {
           <span>{Math.round(getProgressPercentage())}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
-          <div 
+          <div
             className="bg-primary-600 h-2 rounded-full transition-all duration-300"
             style={{ width: `${getProgressPercentage()}%` }}
           />
@@ -220,34 +218,32 @@ export default function AssessmentTool() {
       </div>
 
       {/* Current Question */}
-      <Question 
+      <Question
         question={currentQuestion}
         selectedAnswer={answers[currentQuestion.id]}
         onAnswer={(value) => handleAnswer(currentQuestion.id, value)}
       />
 
       {/* Navigation */}
-      <div className="flex justify-between mt-8 pt-6 border-t">
+      <div className="flex flex-wrap justify-between mt-8 pt-6 border-t gap-4">
         <button
           onClick={handleBack}
           disabled={currentQuestionIndex === 0}
-          className={`px-6 py-3 rounded-lg font-medium ${
-            currentQuestionIndex === 0
+          className={`px-6 py-3 rounded-lg font-medium ${currentQuestionIndex === 0
               ? 'text-gray-400 cursor-not-allowed'
               : 'text-gray-700 hover:bg-gray-100'
-          }`}
+            }`}
         >
           ← Back
         </button>
-        
+
         <button
           onClick={handleNext}
           disabled={!answers[currentQuestion.id]}
-          className={`px-6 py-3 rounded-lg font-medium ${
-            !answers[currentQuestion.id]
+          className={`px-6 py-3 rounded-lg font-medium ${!answers[currentQuestion.id]
               ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
               : 'btn-primary'
-          }`}
+            }`}
         >
           {currentQuestionIndex === questions.length - 1 ? 'See Results' : 'Next →'}
         </button>
