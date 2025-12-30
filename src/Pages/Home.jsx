@@ -35,7 +35,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-linear-to-b from-gray-50 to-white">
+    <div className="bg-linear-to-b from-gray-50 to-white overflow-hidden">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-linear-to-br from-primary-50 via-white to-calm-mist py-12 md:py-20">
         <div className="container mx-auto px-4">
