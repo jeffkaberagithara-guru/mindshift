@@ -4,6 +4,28 @@
 
     html,
     body {
-        @apply overflow-x-hidden min-h-[100dvh];
+        @apply overflow-x-hidden w-full max-w-[100vw] min-h-[100dvh] m-0 p-0;
+    }
+
+    #root {
+        @apply flex flex-col min-h-[100dvh] w-full max-w-[100vw] overflow-x-hidden;
+    }
+
+    img,
+    svg,
+    video,
+    canvas,
+    audio,
+    iframe,
+    embed,
+    object {
+        @apply max-w-full h-auto block;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        overflow-wrap: break-word;
     }
 }
