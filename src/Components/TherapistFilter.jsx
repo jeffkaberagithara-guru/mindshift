@@ -26,7 +26,7 @@ export default function TherapistFilter({ filters, onFilterChange, onClearFilter
     const newValues = currentValues.includes(value)
       ? currentValues.filter(v => v !== value)
       : [...currentValues, value];
-    
+
     onFilterChange(category, newValues);
   };
 
@@ -43,9 +43,9 @@ export default function TherapistFilter({ filters, onFilterChange, onClearFilter
       {/* Mobile Filter Overlay */}
       {isOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50">
-          <div className="absolute inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl">
+          <div className="absolute inset-y-0 right-0 w-full max-w-[min(20rem,80vw)] bg-white shadow-xl">
             <div className="h-full overflow-y-auto">
-              <FilterContent 
+              <FilterContent
                 filters={filters}
                 onFilterChange={onFilterChange}
                 handleCheckboxChange={handleCheckboxChange} // ADD THIS
@@ -59,7 +59,7 @@ export default function TherapistFilter({ filters, onFilterChange, onClearFilter
 
       {/* Desktop Filter Sidebar */}
       <div className="hidden lg:block w-64">
-        <FilterContent 
+        <FilterContent
           filters={filters}
           onFilterChange={onFilterChange}
           handleCheckboxChange={handleCheckboxChange} // ADD THIS
@@ -143,7 +143,7 @@ function FilterContent({ filters, onFilterChange, handleCheckboxChange, onClose,
           />
           <span className="text-gray-700">Virtual Sessions Only</span>
         </label>
-        
+
         <label className="flex items-center gap-3 cursor-pointer">
           <input
             type="checkbox"
@@ -153,7 +153,7 @@ function FilterContent({ filters, onFilterChange, handleCheckboxChange, onClose,
           />
           <span className="text-gray-700">Accepts Insurance</span>
         </label>
-        
+
         <label className="flex items-center gap-3 cursor-pointer">
           <input
             type="checkbox"
@@ -230,7 +230,7 @@ function FilterContent({ filters, onFilterChange, handleCheckboxChange, onClose,
         >
           Apply Filters
         </button>
-        
+
         <button
           onClick={() => {
             onClearFilters();
