@@ -7,11 +7,10 @@ export default function Question({ question, selectedAnswer, onAnswer }) {
           <button
             key={option.value}
             onClick={() => onAnswer(option.value)}
-            className={`w-full text-left p-4 rounded-lg border transition-colors ${
-              selectedAnswer === option.value
-                ? 'bg-primary-100 border-primary-300 text-primary-700'
-                : 'bg-white border-gray-200 hover:bg-gray-50'
-            }`}
+            className={`inline-flex items-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer w-full text-left p-4 border ${selectedAnswer === option.value
+              ? 'bg-blue-50 border-blue-500 text-blue-700 shadow-sm'
+              : 'bg-white border-gray-200 hover:bg-gray-50 text-gray-700'
+              }`}
           >
             {option.label}
           </button>
