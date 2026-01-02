@@ -15,17 +15,17 @@ export default function MoodHistory({ moods, moodHistory, clearHistory }) {
 
     if (date.toDateString() === today.toDateString()) return 'Today';
     if (date.toDateString() === yesterday.toDateString()) return 'Yesterday';
-    
-    return date.toLocaleDateString('en-US', { 
-      weekday: 'short', 
-      month: 'short', 
-      day: 'numeric' 
+
+    return date.toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric'
     });
   };
 
   // Calculate weekly average
   const weeklyMoods = moodHistory.slice(0, 7);
-  const averageMood = weeklyMoods.length > 0 
+  const averageMood = weeklyMoods.length > 0
     ? Math.round(weeklyMoods.reduce((sum, entry) => sum + entry.mood, 0) / weeklyMoods.length)
     : null;
 
@@ -36,7 +36,7 @@ export default function MoodHistory({ moods, moodHistory, clearHistory }) {
         {moodHistory.length > 0 && (
           <button
             onClick={clearHistory}
-            className="text-sm text-gray-500 hover:text-red-600 transition-colors"
+            className="text-sm font-medium text-gray-500 hover:text-red-600 transition-colors focus:outline-none hover:underline"
           >
             Clear History
           </button>
@@ -81,7 +81,7 @@ export default function MoodHistory({ moods, moodHistory, clearHistory }) {
                     <p className="text-sm text-gray-500">{formatDate(entry.date)}</p>
                   </div>
                 </div>
-                
+
                 {entry.note && (
                   <div className="text-right">
                     <p className="text-sm text-gray-600 max-w-xs truncate">{entry.note}</p>
@@ -99,7 +99,7 @@ export default function MoodHistory({ moods, moodHistory, clearHistory }) {
                 <div key={index} className="flex-1 flex flex-col items-center">
                   <div
                     className="w-full bg-primary-500 rounded-t-lg transition-all duration-300 hover:bg-primary-600"
-                    style={{ 
+                    style={{
                       height: `${(entry.mood / 5) * 100}%`,
                       backgroundColor: moods.find(m => m.value === entry.mood)?.color.split(' ')[0].replace('bg-', '') || '#3B82F6'
                     }}
