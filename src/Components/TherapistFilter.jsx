@@ -226,7 +226,7 @@ function FilterContent({ filters, onFilterChange, handleCheckboxChange, onClose,
             applyFilters();
             if (onClose) onClose();
           }}
-          className="w-full btn-primary"
+          className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer w-full bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500 px-6 py-3"
         >
           Apply Filters
         </button>
@@ -236,7 +236,7 @@ function FilterContent({ filters, onFilterChange, handleCheckboxChange, onClose,
             onClearFilters();
             if (onClose) onClose();
           }}
-          className="w-full btn-secondary"
+          className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer w-full bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 focus:ring-gray-300 px-6 py-3"
         >
           Clear All Filters
         </button>
