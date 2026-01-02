@@ -178,18 +178,18 @@ export default function AssessmentTool() {
         <div className="flex flex-wrap gap-2 mb-4">
           <button
             onClick={() => restartAssessment('depression')}
-            className={`px-4 py-2 rounded-lg transition-colors ${assessmentType === 'depression'
-                ? 'bg-primary-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer px-4 py-2 ${assessmentType === 'depression'
+              ? 'bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
           >
             Depression Assessment
           </button>
           <button
             onClick={() => restartAssessment('anxiety')}
-            className={`px-4 py-2 rounded-lg transition-colors ${assessmentType === 'anxiety'
-                ? 'bg-primary-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer px-4 py-2 ${assessmentType === 'anxiety'
+              ? 'bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
           >
             Anxiety Assessment
@@ -229,9 +229,9 @@ export default function AssessmentTool() {
         <button
           onClick={handleBack}
           disabled={currentQuestionIndex === 0}
-          className={`px-6 py-3 rounded-lg font-medium ${currentQuestionIndex === 0
-              ? 'text-gray-400 cursor-not-allowed'
-              : 'text-gray-700 hover:bg-gray-100'
+          className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer px-6 py-3 ${currentQuestionIndex === 0
+            ? 'text-gray-400 cursor-not-allowed'
+            : 'text-gray-700 hover:bg-gray-100'
             }`}
         >
           ← Back
@@ -240,9 +240,9 @@ export default function AssessmentTool() {
         <button
           onClick={handleNext}
           disabled={!answers[currentQuestion.id]}
-          className={`px-6 py-3 rounded-lg font-medium ${!answers[currentQuestion.id]
-              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-              : 'btn-primary'
+          className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer px-6 py-3 ${!answers[currentQuestion.id]
+            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+            : 'bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500 hover:scale-105'
             }`}
         >
           {currentQuestionIndex === questions.length - 1 ? 'See Results' : 'Next →'}
