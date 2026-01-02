@@ -84,27 +84,27 @@ export default function Crisis() {
               <span className="w-3 h-3 bg-white rounded-full animate-pulse"></span>
               <span className="font-medium">Immediate Support Available</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               You Are Not Alone
               <span className="block">Help Is Here</span>
             </h1>
-            
+
             <p className="text-xl opacity-90 mb-8 max-w-3xl mx-auto">
               Immediate, confidential crisis support available 24/7. Your safety and wellbeing are our priority.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="tel:988"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-red-600 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-2xl"
+                className="inline-flex items-center justify-center font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 gap-3 px-8 py-4 bg-white text-red-600 shadow-2xl hover:bg-gray-100 text-lg mx-2"
               >
                 <FaPhone className="w-6 h-6" />
                 Call 988 Now
               </a>
               <a
                 href="tel:911"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all duration-300"
+                className="inline-flex items-center justify-center font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 gap-3 px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white/10 text-lg mx-2"
               >
                 <FaAmbulance className="w-6 h-6" />
                 Emergency: 911
@@ -133,7 +133,7 @@ export default function Crisis() {
                   <FaShieldAlt className="w-5 h-5 text-red-500" />
                   {section.category}
                 </h3>
-                
+
                 <div className="space-y-4">
                   {section.items.map((resource, index) => (
                     <div
@@ -150,7 +150,7 @@ export default function Crisis() {
                               {resource.name}
                             </h4>
                             <p className="text-gray-600 mb-3">{resource.description}</p>
-                            
+
                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                               <div className="text-2xl font-bold text-gray-900">
                                 {resource.number}
@@ -163,12 +163,12 @@ export default function Crisis() {
                                 {resource.type === 'call' ? (
                                   <a
                                     href={`tel:${resource.number.replace(/\D/g, '')}`}
-                                    className="px-4 py-2 bg-red-100 text-red-700 rounded-lg font-medium hover:bg-red-200 transition-colors"
+                                    className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 px-4 py-2 bg-red-100 text-red-700 hover:bg-red-200"
                                   >
                                     Call Now
                                   </a>
                                 ) : resource.type === 'text' ? (
-                                  <button className="px-4 py-2 bg-green-100 text-green-700 rounded-lg font-medium hover:bg-green-200 transition-colors">
+                                  <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 px-4 py-2 bg-green-100 text-green-700 hover:bg-green-200">
                                     Text Now
                                   </button>
                                 ) : (
@@ -194,8 +194,8 @@ export default function Crisis() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Safety Planning Guide
               </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 {safetyPlanning.map((plan) => (
                   <div
                     key={plan.step}
@@ -218,7 +218,7 @@ export default function Crisis() {
               <FaGlobe className="w-6 h-6 text-blue-500" />
               International Crisis Lines
             </h3>
-            
+
             <div className="bg-white rounded-xl border">
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -241,7 +241,7 @@ export default function Crisis() {
                         <td className="px-6 py-4">
                           <a
                             href={`tel:${line.number.replace(/\D/g, '')}`}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                            className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 gap-2 px-4 py-2 bg-blue-100 text-blue-700 hover:bg-blue-200"
                           >
                             <FaPhone className="w-4 h-4" />
                             Call
