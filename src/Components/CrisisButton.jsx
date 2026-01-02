@@ -55,7 +55,7 @@ function CrisisModal({ isOpen, onClose }) {
             </div>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 p-2"
+              className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full"
               aria-label="Close"
             >
               <FaTimes className="w-6 h-6" />
@@ -80,14 +80,14 @@ function CrisisModal({ isOpen, onClose }) {
                       {resource.phone && (
                         <a
                           href={`tel:${resource.phone}`}
-                          className="inline-flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                          className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 gap-2 bg-white text-gray-900 px-4 py-2 border border-gray-200 hover:bg-gray-50"
                         >
                           <FaPhoneAlt className="w-4 h-4" />
                           Call {resource.phone}
                         </a>
                       )}
                       {resource.text && (
-                        <button className="inline-flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                        <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 gap-2 bg-white text-gray-900 px-4 py-2 border border-gray-200 hover:bg-gray-50">
                           {resource.text}
                         </button>
                       )}
@@ -140,7 +140,7 @@ export default function CrisisButton() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-linear-to-r from-red-500 to-orange-500 text-white p-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-red-300"
+        className="fixed bottom-6 right-6 z-50 inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 bg-linear-to-r from-red-500 to-orange-500 text-white p-4 rounded-full shadow-xl hover:shadow-2xl focus:ring-red-300"
         aria-label="Emergency help"
       >
         <FaPhoneAlt className="w-6 h-6" />
