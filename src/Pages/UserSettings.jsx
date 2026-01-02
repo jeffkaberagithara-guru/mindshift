@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage.jsx';
-import { 
-  FaUser, FaBell, FaMoon, FaSun, FaEye, FaTrash, 
+import {
+  FaUser, FaBell, FaMoon, FaSun, FaEye, FaTrash,
   FaDownload, FaLock, FaLanguage, FaFont, FaVolumeUp,
   FaCheck, FaTimes, FaCog, FaPalette, FaShieldAlt
 } from 'react-icons/fa';
@@ -57,7 +57,7 @@ export default function UserSettings() {
         crisisButtonSize
       }
     };
-    
+
     const dataStr = JSON.stringify(data, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
     const url = URL.createObjectURL(dataBlob);
@@ -75,7 +75,7 @@ export default function UserSettings() {
           <FaCog className="w-6 h-6 text-blue-600 animate-spin-slow" />
           <span className="font-semibold text-blue-700">Your Settings</span>
         </div>
-        
+
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Personalize Your Experience
         </h1>
@@ -93,11 +93,10 @@ export default function UserSettings() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-3 w-full px-4 py-3 rounded-lg transition-colors ${
-                    activeTab === tab.id
-                      ? 'bg-linear-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-100'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
+                  className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer gap-3 w-full px-4 py-3 ${activeTab === tab.id
+                    ? 'bg-linear-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-100'
+                    : 'text-gray-700 hover:bg-gray-100'
+                    }`}
                 >
                   <span className="text-lg">{tab.icon}</span>
                   <span className="font-medium">{tab.label}</span>
@@ -145,11 +144,10 @@ export default function UserSettings() {
                     <div className="flex gap-4">
                       <button
                         onClick={() => setTheme('light')}
-                        className={`flex-1 flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-all ${
-                          theme === 'light'
-                            ? 'border-blue-500 bg-blue-50'
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}
+                        className={`inline-flex items-center justify-center font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer flex-1 flex-col gap-3 p-6 border-2 ${theme === 'light'
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-200 hover:border-gray-300'
+                          }`}
                       >
                         <FaSun className="w-8 h-8 text-yellow-500" />
                         <span className="font-medium">Light Mode</span>
@@ -161,11 +159,10 @@ export default function UserSettings() {
                       </button>
                       <button
                         onClick={() => setTheme('dark')}
-                        className={`flex-1 flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-all ${
-                          theme === 'dark'
-                            ? 'border-blue-500 bg-blue-50'
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}
+                        className={`inline-flex items-center justify-center font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer flex-1 flex-col gap-3 p-6 border-2 ${theme === 'dark'
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-200 hover:border-gray-300'
+                          }`}
                       >
                         <FaMoon className="w-8 h-8 text-indigo-500" />
                         <span className="font-medium">Dark Mode</span>
@@ -189,11 +186,10 @@ export default function UserSettings() {
                         <button
                           key={option.value}
                           onClick={() => setFontSize(option.value)}
-                          className={`p-4 rounded-lg border text-center transition-all ${
-                            fontSize === option.value
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-gray-300'
-                          } ${option.size}`}
+                          className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer p-4 border text-center ${fontSize === option.value
+                            ? 'border-blue-500 bg-blue-50'
+                            : 'border-gray-200 hover:border-gray-300'
+                            } ${option.size}`}
                         >
                           <div className="font-medium mb-1">{option.label}</div>
                           <div className="text-sm text-gray-500">Aa</div>
@@ -213,11 +209,10 @@ export default function UserSettings() {
                         <button
                           key={option.value}
                           onClick={() => setLanguage(option.value)}
-                          className={`p-4 rounded-lg border text-center transition-all ${
-                            language === option.value
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
+                          className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer p-4 border text-center ${language === option.value
+                            ? 'border-blue-500 bg-blue-50'
+                            : 'border-gray-200 hover:border-gray-300'
+                            }`}
                         >
                           <div className="font-medium">{option.label}</div>
                           <div className="text-sm text-gray-500">{option.value}</div>
@@ -236,7 +231,7 @@ export default function UserSettings() {
                   <FaBell className="w-6 h-6 text-yellow-600" />
                   Notification Settings
                 </h2>
-                
+
                 <div className="space-y-8">
                   {/* Notification Toggle */}
                   <div className="flex items-center justify-between p-6 bg-gray-50 rounded-xl">
@@ -251,14 +246,12 @@ export default function UserSettings() {
                     </div>
                     <button
                       onClick={() => setNotifications(!notifications)}
-                      className={`relative inline-flex h-8 w-16 items-center rounded-full transition-colors ${
-                        notifications ? 'bg-green-500' : 'bg-gray-300'
-                      }`}
+                      className={`relative inline-flex h-8 w-16 items-center rounded-full transition-colors ${notifications ? 'bg-green-500' : 'bg-gray-300'
+                        }`}
                     >
                       <span
-                        className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
-                          notifications ? 'translate-x-9' : 'translate-x-1'
-                        }`}
+                        className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${notifications ? 'translate-x-9' : 'translate-x-1'
+                          }`}
                       />
                     </button>
                   </div>
@@ -304,15 +297,15 @@ export default function UserSettings() {
                       Sound & Vibration
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <button className="p-4 border rounded-lg text-center hover:border-gray-300 transition-all">
+                      <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer p-4 border text-center hover:border-gray-300">
                         <div className="font-medium mb-1">Silent</div>
                         <div className="text-sm text-gray-500">No sound</div>
                       </button>
-                      <button className="p-4 border rounded-lg text-center hover:border-gray-300 transition-all">
+                      <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer p-4 border text-center hover:border-gray-300">
                         <div className="font-medium mb-1">Gentle</div>
                         <div className="text-sm text-gray-500">Soft tones</div>
                       </button>
-                      <button className="p-4 border rounded-lg text-center hover:border-gray-300 transition-all">
+                      <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer p-4 border text-center hover:border-gray-300">
                         <div className="font-medium mb-1">Vibrate</div>
                         <div className="text-sm text-gray-500">Vibration only</div>
                       </button>
@@ -344,14 +337,12 @@ export default function UserSettings() {
                     </div>
                     <button
                       onClick={() => setPrivacyMode(!privacyMode)}
-                      className={`relative inline-flex h-8 w-16 items-center rounded-full transition-colors ${
-                        privacyMode ? 'bg-green-500' : 'bg-gray-300'
-                      }`}
+                      className={`relative inline-flex h-8 w-16 items-center rounded-full transition-colors ${privacyMode ? 'bg-green-500' : 'bg-gray-300'
+                        }`}
                     >
                       <span
-                        className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
-                          privacyMode ? 'translate-x-9' : 'translate-x-1'
-                        }`}
+                        className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${privacyMode ? 'translate-x-9' : 'translate-x-1'
+                          }`}
                       />
                     </button>
                   </div>
@@ -362,7 +353,7 @@ export default function UserSettings() {
                     <div className="space-y-4">
                       <button
                         onClick={exportData}
-                        className="flex items-center justify-between w-full p-4 border rounded-lg hover:border-blue-300 transition-all group"
+                        className="inline-flex items-center justify-between font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer w-full p-4 border hover:border-blue-300 group"
                       >
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -377,10 +368,10 @@ export default function UserSettings() {
                           →
                         </div>
                       </button>
-                      
+
                       <button
                         onClick={clearAllData}
-                        className="flex items-center justify-between w-full p-4 border rounded-lg hover:border-red-300 transition-all group"
+                        className="inline-flex items-center justify-between font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer w-full p-4 border hover:border-red-300 group"
                       >
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
@@ -432,18 +423,16 @@ export default function UserSettings() {
                         <button
                           key={size}
                           onClick={() => setCrisisButtonSize(size)}
-                          className={`p-4 rounded-lg border text-center transition-all ${
-                            crisisButtonSize === size
-                              ? 'border-purple-500 bg-purple-50'
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
+                          className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer p-4 border text-center ${crisisButtonSize === size
+                            ? 'border-purple-500 bg-purple-50'
+                            : 'border-gray-200 hover:border-gray-300'
+                            }`}
                         >
                           <div className="font-medium capitalize mb-2">{size}</div>
-                          <div className={`mx-auto rounded-lg bg-red-500 ${
-                            size === 'small' ? 'w-16 h-8' : 
-                            size === 'normal' ? 'w-24 h-10' : 
-                            'w-32 h-12'
-                          }`}></div>
+                          <div className={`mx-auto rounded-lg bg-red-500 ${size === 'small' ? 'w-16 h-8' :
+                            size === 'normal' ? 'w-24 h-10' :
+                              'w-32 h-12'
+                            }`}></div>
                         </button>
                       ))}
                     </div>
