@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 export default function Results({ score, assessmentType, assessmentHistory, onRestart, onSwitchType }) {
   const getSeverity = (score, type) => {
     if (type === 'depression') {
-      if (score <= 4) return { level: 'Minimal', color: 'bg-green-100 text-green-700 border-green-200' };
-      if (score <= 9) return { level: 'Mild', color: 'bg-yellow-100 text-yellow-700 border-yellow-200' };
-      if (score <= 14) return { level: 'Moderate', color: 'bg-orange-100 text-orange-700 border-orange-200' };
-      if (score <= 19) return { level: 'Moderately Severe', color: 'bg-red-100 text-red-700 border-red-200' };
-      return { level: 'Severe', color: 'bg-red-200 text-red-800 border-red-300' };
+      if (score <= 4) return { level: 'Minimal', color: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800' };
+      if (score <= 9) return { level: 'Mild', color: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-800' };
+      if (score <= 14) return { level: 'Moderate', color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800' };
+      if (score <= 19) return { level: 'Moderately Severe', color: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800' };
+      return { level: 'Severe', color: 'bg-red-200 dark:bg-red-800/40 text-red-800 dark:text-red-200 border-red-300 dark:border-red-700' };
     } else {
-      if (score <= 4) return { level: 'Minimal', color: 'bg-green-100 text-green-700 border-green-200' };
-      if (score <= 9) return { level: 'Mild', color: 'bg-yellow-100 text-yellow-700 border-yellow-200' };
-      if (score <= 14) return { level: 'Moderate', color: 'bg-orange-100 text-orange-700 border-orange-200' };
-      return { level: 'Severe', color: 'bg-red-100 text-red-700 border-red-200' };
+      if (score <= 4) return { level: 'Minimal', color: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800' };
+      if (score <= 9) return { level: 'Mild', color: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-800' };
+      if (score <= 14) return { level: 'Moderate', color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800' };
+      return { level: 'Severe', color: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800' };
     }
   };
 
@@ -99,18 +99,18 @@ export default function Results({ score, assessmentType, assessmentHistory, onRe
   const recommendations = getRecommendations(severity.level);
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-lg">
+    <div className="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-colors duration-300">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full mb-4">
+        <div className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full mb-4">
           <FaChartLine className="w-5 h-5" />
           <span className="font-medium">Assessment Complete</span>
         </div>
 
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Your {assessmentType === 'depression' ? 'Depression' : 'Anxiety'} Assessment Results
         </h2>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-400">
           Based on the {assessmentType === 'depression' ? 'PHQ-9' : 'GAD-7'} screening tool
         </p>
       </div>
@@ -128,9 +128,9 @@ export default function Results({ score, assessmentType, assessmentHistory, onRe
               }}
             >
               <div className="transform -rotate-45 text-center">
-                <div className="text-5xl font-bold text-gray-900">{score}</div>
-                <div className="text-sm text-gray-500 mt-2">Total Score</div>
-                <div className="text-xs text-gray-400 mt-1">
+                <div className="text-5xl font-bold text-gray-900 dark:text-white">{score}</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">Total Score</div>
+                <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                   Range: {getScoreRange(assessmentType)}
                 </div>
               </div>
@@ -144,11 +144,11 @@ export default function Results({ score, assessmentType, assessmentHistory, onRe
               <span className="font-bold text-lg">{severity.level} Symptoms</span>
             </div>
 
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">{recommendations.title}</h3>
-            <p className="text-gray-700 mb-4">{recommendations.description}</p>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{recommendations.title}</h3>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">{recommendations.description}</p>
 
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-              <p className="text-blue-800 font-medium">
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-900/30">
+              <p className="text-blue-800 dark:text-blue-200 font-medium">
                 <FaUserMd className="inline-block w-4 h-4 mr-2" />
                 {recommendations.professional}
               </p>
@@ -159,23 +159,23 @@ export default function Results({ score, assessmentType, assessmentHistory, onRe
 
       {/* Recommended Actions */}
       <div className="mb-10">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6">Recommended Next Steps</h3>
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Recommended Next Steps</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {recommendations.actions.map((action, index) => (
             <Link
               key={index}
               to={action.link}
-              className="card p-5 hover:shadow-lg transition-shadow group"
+              className="card p-5 hover:shadow-lg transition-all duration-300 group bg-white dark:bg-gray-700 dark:border-gray-600 border border-transparent"
             >
-              <div className="flex items-center gap-3 mb-3 text-blue-600">
-                <div className="p-2 bg-blue-100 rounded-lg">
+              <div className="flex items-center gap-3 mb-3 text-blue-600 dark:text-blue-400">
+                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
                   {action.icon}
                 </div>
-                <h4 className="font-semibold text-gray-900 group-hover:text-blue-600">
+                <h4 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
                   {action.text}
                 </h4>
               </div>
-              <div className="flex items-center text-sm text-blue-600 font-medium">
+              <div className="flex items-center text-sm text-blue-600 dark:text-blue-400 font-medium">
                 Learn more
                 <FaArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -186,9 +186,9 @@ export default function Results({ score, assessmentType, assessmentHistory, onRe
 
       {/* Important Notes */}
       <div className="mb-10 space-y-6">
-        <div className="p-5 bg-yellow-50 border border-yellow-200 rounded-xl">
-          <h4 className="font-semibold text-yellow-800 mb-2">Important Notes</h4>
-          <ul className="text-yellow-700 space-y-1 text-sm">
+        <div className="p-5 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl">
+          <h4 className="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">Important Notes</h4>
+          <ul className="text-yellow-700 dark:text-yellow-200 space-y-1 text-sm">
             <li>• This is a screening tool, not a diagnosis</li>
             <li>• Only a qualified mental health professional can provide a diagnosis</li>
             <li>• Your results are confidential and stored only on your device</li>
@@ -196,9 +196,9 @@ export default function Results({ score, assessmentType, assessmentHistory, onRe
           </ul>
         </div>
 
-        <div className="p-5 bg-red-50 border border-red-200 rounded-xl">
-          <h4 className="font-semibold text-red-800 mb-2">If You're in Crisis</h4>
-          <p className="text-red-700 mb-3">
+        <div className="p-5 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
+          <h4 className="font-semibold text-red-800 dark:text-red-300 mb-2">If You're in Crisis</h4>
+          <p className="text-red-700 dark:text-red-200 mb-3">
             If you're having thoughts of harming yourself or others, please seek immediate help:
           </p>
           <Link
@@ -214,26 +214,26 @@ export default function Results({ score, assessmentType, assessmentHistory, onRe
       {/* Assessment History */}
       {assessmentHistory.length > 0 && (
         <div className="mb-10">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Your Assessment History</h3>
-          <div className="bg-gray-50 rounded-lg p-4">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Your Assessment History</h3>
+          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b">
-                    <th className="text-left py-2 text-gray-600">Date</th>
-                    <th className="text-left py-2 text-gray-600">Type</th>
-                    <th className="text-left py-2 text-gray-600">Score</th>
-                    <th className="text-left py-2 text-gray-600">Level</th>
+                  <tr className="border-b dark:border-gray-600">
+                    <th className="text-left py-2 text-gray-600 dark:text-gray-300">Date</th>
+                    <th className="text-left py-2 text-gray-600 dark:text-gray-300">Type</th>
+                    <th className="text-left py-2 text-gray-600 dark:text-gray-300">Score</th>
+                    <th className="text-left py-2 text-gray-600 dark:text-gray-300">Level</th>
                   </tr>
                 </thead>
                 <tbody>
                   {assessmentHistory.slice(0, 5).map((assessment) => (
-                    <tr key={assessment.id} className="border-b border-gray-100">
-                      <td className="py-3">
+                    <tr key={assessment.id} className="border-b border-gray-100 dark:border-gray-600">
+                      <td className="py-3 text-gray-900 dark:text-white">
                         {new Date(assessment.date).toLocaleDateString()}
                       </td>
-                      <td className="py-3 capitalize">{assessment.type}</td>
-                      <td className="py-3 font-medium">{assessment.score}</td>
+                      <td className="py-3 capitalize text-gray-900 dark:text-white">{assessment.type}</td>
+                      <td className="py-3 font-medium text-gray-900 dark:text-white">{assessment.score}</td>
                       <td className="py-3">
                         <span className={`px-2 py-1 rounded-full text-xs ${getSeverity(assessment.score, assessment.type).color}`}>
                           {getSeverity(assessment.score, assessment.type).level}
@@ -260,7 +260,7 @@ export default function Results({ score, assessmentType, assessmentHistory, onRe
 
         <button
           onClick={() => onSwitchType(assessmentType === 'depression' ? 'anxiety' : 'depression')}
-          className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer flex-1 bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 focus:ring-gray-300 px-6 py-3"
+          className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer flex-1 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 hover:border-gray-300 focus:ring-gray-300 px-6 py-3"
         >
           Take {assessmentType === 'depression' ? 'Anxiety' : 'Depression'} Assessment
         </button>
@@ -275,7 +275,7 @@ export default function Results({ score, assessmentType, assessmentHistory, onRe
       </div>
 
       {/* Footer Note */}
-      <div className="mt-8 pt-6 border-t text-center text-sm text-gray-500">
+      <div className="mt-8 pt-6 border-t dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
         <p>
           Based on {assessmentType === 'depression' ? 'PHQ-9 (Patient Health Questionnaire-9)' : 'GAD-7 (Generalized Anxiety Disorder-7)'} screening tools.
           These tools are not diagnostic instruments.
