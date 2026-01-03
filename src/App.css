@@ -1,10 +1,11 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
 
 @layer base {
 
     html,
     body {
-        @apply overflow-x-hidden w-full max-w-[100vw] min-h-[100dvh] m-0 p-0;
+        @apply overflow-x-hidden w-full max-w-[100vw] min-h-[100dvh] m-0 p-0 bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300;
     }
 
     #root {
