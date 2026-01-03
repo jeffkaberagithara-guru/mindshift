@@ -159,17 +159,17 @@ export default function AssessmentTool() {
   }
 
   return (
-    <div className="card max-w-3xl mx-auto p-6">
+    <div className="card max-w-3xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow transition-colors duration-300">
       {/* Header */}
       <div className="flex items-center gap-3 mb-8">
-        <div className="p-3 bg-primary-100 rounded-lg text-primary-600">
+        <div className="p-3 bg-primary-100 dark:bg-primary-900/30 rounded-lg text-primary-600 dark:text-primary-400">
           <FaClipboardCheck className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
             {assessmentType === 'depression' ? 'Depression' : 'Anxiety'} Self-Assessment
           </h2>
-          <p className="text-gray-600">PHQ-9 based screening tool</p>
+          <p className="text-gray-600 dark:text-gray-300">PHQ-9 based screening tool</p>
         </div>
       </div>
 
@@ -180,7 +180,7 @@ export default function AssessmentTool() {
             onClick={() => restartAssessment('depression')}
             className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer px-4 py-2 ${assessmentType === 'depression'
               ? 'bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
           >
             Depression Assessment
@@ -189,14 +189,14 @@ export default function AssessmentTool() {
             onClick={() => restartAssessment('anxiety')}
             className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer px-4 py-2 ${assessmentType === 'anxiety'
               ? 'bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
           >
             Anxiety Assessment
           </button>
         </div>
-        <div className="p-4 bg-blue-50 rounded-lg">
-          <p className="text-sm text-blue-700">
+        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-900/30">
+          <p className="text-sm text-blue-700 dark:text-blue-300">
             <strong>Disclaimer:</strong> This is not a diagnostic tool. It's a screening measure
             to help identify symptoms that may indicate a need for professional evaluation.
           </p>
@@ -205,11 +205,11 @@ export default function AssessmentTool() {
 
       {/* Progress Bar */}
       <div className="mb-8">
-        <div className="flex justify-between text-sm text-gray-600 mb-2">
+        <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-2">
           <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
           <span>{Math.round(getProgressPercentage())}%</span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
           <div
             className="bg-primary-600 h-2 rounded-full transition-all duration-300"
             style={{ width: `${getProgressPercentage()}%` }}
@@ -225,13 +225,13 @@ export default function AssessmentTool() {
       />
 
       {/* Navigation */}
-      <div className="flex flex-wrap justify-between mt-8 pt-6 border-t gap-4">
+      <div className="flex flex-wrap justify-between mt-8 pt-6 border-t dark:border-gray-700 gap-4">
         <button
           onClick={handleBack}
           disabled={currentQuestionIndex === 0}
           className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer px-6 py-3 ${currentQuestionIndex === 0
-            ? 'text-gray-400 cursor-not-allowed'
-            : 'text-gray-700 hover:bg-gray-100'
+            ? 'text-gray-400 dark:text-gray-600 cursor-not-allowed'
+            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
         >
           ← Back
@@ -241,7 +241,7 @@ export default function AssessmentTool() {
           onClick={handleNext}
           disabled={!answers[currentQuestion.id]}
           className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer px-6 py-3 ${!answers[currentQuestion.id]
-            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+            ? 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
             : 'bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500 hover:scale-105'
             }`}
         >
