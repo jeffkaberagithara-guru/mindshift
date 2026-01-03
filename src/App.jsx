@@ -10,9 +10,12 @@ import Crisis from './pages/Crisis.jsx';
 import MoodTracker from './components/MoodTracker.jsx';
 import AssessmentTool from './components/AssessmentTool.jsx';
 import UserSettings from './pages/UserSettings.jsx';
+import { useLocalStorage } from './hooks/useLocalStorage.jsx';
 import './App.css';
 
 function App() {
+  useLocalStorage('theme', 'light');
+
   return (
 
     <div className="min-h-dvh flex flex-col">
