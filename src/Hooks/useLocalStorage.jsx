@@ -1,4 +1,4 @@
-import { useState, } from 'react';
+import { useState, useEffect } from 'react';
 
 export const useLocalStorage = (key, initialValue) => {
   const [storedValue, setStoredValue] = useState(() => {
@@ -20,6 +20,16 @@ export const useLocalStorage = (key, initialValue) => {
       console.error('Error setting localStorage:', error);
     }
   };
+
+  useEffect(() => {
+    if (key === 'theme') {
+      if (storedValue === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+  }, [key, storedValue]);
 
   return [storedValue, setValue];
 };
