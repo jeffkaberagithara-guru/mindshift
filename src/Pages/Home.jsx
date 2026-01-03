@@ -35,22 +35,22 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-linear-to-b from-gray-50 to-white overflow-hidden">
+    <div className="bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-900 overflow-hidden transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-linear-to-br from-primary-50 via-white to-calm-mist py-12 md:py-20">
+      <section className="relative overflow-hidden bg-linear-to-br from-primary-50 via-white to-calm-mist dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 md:py-20 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
+            <div className="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full mb-8 shadow-sm">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              <span className="text-sm font-medium text-primary-700">Free & Anonymous</span>
+              <span className="text-sm font-medium text-primary-700 dark:text-primary-300">Free & Anonymous</span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               Your mental health
-              <span className="block text-primary-600">matters here</span>
+              <span className="block text-primary-600 dark:text-primary-400">matters here</span>
             </h1>
 
-            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
               A safe, private space where you can find support without judgment or pressure.
             </p>
 
@@ -58,7 +58,7 @@ export default function Home() {
               <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500 text-lg px-8 py-4">
                 Check in with yourself
               </button>
-              <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 focus:ring-gray-300 text-lg px-8 py-4">
+              <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 focus:ring-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 dark:hover:border-gray-600 text-lg px-8 py-4">
                 I need help now →
               </button>
             </div>
