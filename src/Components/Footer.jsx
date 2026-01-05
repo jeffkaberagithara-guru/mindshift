@@ -18,8 +18,8 @@ export default function Footer() {
                   <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-gray-900"></div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold bg-linear-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                    MindfulSupport
+                  <h3 className="text-2xl font-extrabold tracking-tight bg-linear-to-r from-violet-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+                    MindShift
                   </h3>
                   <p className="text-sm text-gray-400">Your mental wellness journey starts here</p>
                 </div>
@@ -138,7 +138,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-gray-400 text-sm">
-              <p>&copy; {currentYear} MindfulSupport. All rights reserved.</p>
+              <p>&copy; {currentYear} MindShift. All rights reserved.</p>
               <p className="mt-1">Made with <FaHeart className="inline w-3 h-3 text-red-500 animate-pulse" /> for mental wellness</p>
             </div>
 
