@@ -63,7 +63,7 @@ export default function UserSettings() {
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'mindfulsupport-data-backup.json';
+    link.download = 'mindshift-data-backup.json';
     link.click();
   };
 
@@ -80,7 +80,7 @@ export default function UserSettings() {
           Personalize Your Experience
         </h1>
         <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Customize how you interact with MindfulSupport to create a comfortable, supportive environment.
+          Customize how you interact with MindShift to create a comfortable, supportive environment.
         </p>
       </div>
 
