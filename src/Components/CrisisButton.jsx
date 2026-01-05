@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { FaPhoneAlt, FaComment, FaTimes } from 'react-icons/fa';
 
 export function CrisisModal({ isOpen, onClose }) {
@@ -43,93 +44,105 @@ export function CrisisModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 transition-opacity">
-      <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-[min(28rem,calc(100vw-2rem))] w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+  return createPortal(
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300">
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-gray-900/60 backdrop-blur-md"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      {/* Modal Container */}
+      <div className="relative w-full max-w-lg bg-white dark:bg-gray-800 rounded-2xl shadow-2xl flex flex-col max-h-[85vh] animate-in fade-in zoom-in-95 duration-200 mt-12 sm:mt-0">
+
+        {/* Close Button - Floats top right */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors cursor-pointer"
+          aria-label="Close"
+        >
+          <FaTimes className="w-5 h-5 drop-shadow-md" />
+        </button>
+
         {/* Header */}
-        <div className="sticky top-0 bg-white dark:bg-gray-800 border-b dark:border-gray-700 p-6 rounded-t-2xl z-10">
-          <div className="flex justify-between items-center">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Need Help Now?</h2>
-              <p className="text-gray-600 dark:text-gray-300 mt-2">You're not alone. Help is available 24/7.</p>
-            </div>
-            <button
-              onClick={onClose}
-              className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer p-2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"
-              aria-label="Close"
-            >
-              <FaTimes className="w-6 h-6" />
-            </button>
-          </div>
+        <div className="shrink-0 bg-linear-to-r from-red-600 to-orange-600 p-6 pt-8 pb-8 rounded-t-2xl z-10 text-white relative overflow-hidden">
+          {/* Decorative background circle */}
+          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+
+          <h2 className="text-3xl font-bold flex items-center gap-3 relative z-10">
+            <FaPhoneAlt className="w-6 h-6" />
+            Help is Here
+          </h2>
+          <p className="text-red-50 mt-2 font-medium text-lg relative z-10">You are not alone. 24/7 Support.</p>
         </div>
 
-        {/* Resources */}
-        <div className="p-6">
+        {/* Scrollable Content */}
+        <div className="overflow-y-auto p-6 space-y-6 flex-1 overscroll-contain">
           <div className="space-y-4">
             {crisisResources.map((resource, index) => (
-              <div key={index} className={`p-4 rounded-xl ${resource.color} bg-opacity-10 dark:bg-opacity-20 border border-opacity-20 dark:border-opacity-30`}>
-                <div className="flex items-start space-x-4">
-                  <div className={`p-3 ${resource.color} rounded-lg text-white shadow-sm`}>
-                    <resource.icon className="w-6 h-6" />
+              <div key={index} className="p-5 rounded-2xl bg-white dark:bg-gray-800 border-2 border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200 group">
+                <div className="flex items-start gap-4">
+                  {/* Icon Box */}
+                  <div className={`shrink-0 p-3 rounded-xl ${resource.color} bg-opacity-10 text-gray-900 dark:text-white`}>
+                    <resource.icon className={`w-6 h-6 ${resource.color.replace('bg-', 'text-')}`} />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 dark:text-white">{resource.name}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{resource.description}</p>
 
-                    <div className="mt-4 flex flex-wrap gap-2">
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-tight">{resource.name}</h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 mb-4">{resource.description}</p>
+
+                    <div className="flex flex-wrap gap-3">
                       {resource.phone && (
                         <a
                           href={`tel:${resource.phone}`}
-                          className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 gap-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2 border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 shadow-sm"
+                          className="flex-1 min-w-[120px] inline-flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md"
                         >
                           <FaPhoneAlt className="w-4 h-4" />
-                          Call {resource.phone}
+                          <span className="text-lg whitespace-nowrap">{resource.phone}</span>
                         </a>
                       )}
                       {resource.text && (
-                        <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 gap-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2 border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 shadow-sm">
-                          {resource.text}
-                        </button>
+                        <a
+                          href={`sms:${resource.phone || ''}?body=${resource.text}`}
+                          className="flex-1 min-w-[120px] inline-flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 active:scale-[0.98] transition-all"
+                        >
+                          <FaComment className="w-4 h-4" />
+                          <span className="whitespace-nowrap">{resource.text}</span>
+                        </a>
                       )}
                     </div>
-
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-3 flex items-center">
-                      <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                      Available {resource.hours}
-                    </p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Local Resources Note */}
-          <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-900/30">
-            <p className="text-sm text-blue-800 dark:text-blue-200">
-              <strong>Important:</strong> If you're in immediate danger, please call your local emergency services.
-              In the US and Canada, that's 911.
-            </p>
-          </div>
-
           {/* Additional Help */}
-          <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl border border-gray-100 dark:border-gray-700">
-            <h4 className="font-medium text-gray-900 dark:text-white mb-2">Other Ways to Get Help</h4>
-            <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-              <li>• Go to the nearest hospital emergency room</li>
-              <li>• Contact a trusted friend or family member</li>
-              <li>• Reach out to your therapist or doctor</li>
-            </ul>
+          <div className="p-5 bg-orange-50 dark:bg-orange-900/20 rounded-2xl border border-orange-100 dark:border-orange-900/30">
+            <h4 className="font-bold text-orange-800 dark:text-orange-200 mb-2 flex items-center gap-2">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+              </span>
+              Immediate Danger?
+            </h4>
+            <p className="text-sm text-orange-700 dark:text-orange-300 leading-relaxed">
+              If you or someone else is in immediate danger, please call <strong>911</strong> (or your local emergency number) or go to the nearest emergency room immediately.
+            </p>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="sticky bottom-0 bg-white dark:bg-gray-800 border-t dark:border-gray-700 p-6 rounded-b-2xl">
-          <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
-            All services are free, confidential, and available 24/7.
+        <div className="shrink-0 bg-gray-50 dark:bg-gray-900/50 p-4 border-t border-gray-100 dark:border-gray-700 text-center rounded-b-2xl">
+          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+            Confidential • Free • Available 24/7
           </p>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
@@ -140,7 +153,7 @@ export default function CrisisButton() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer hover:scale-105 bg-linear-to-r from-red-500 to-orange-500 text-white p-4 rounded-full shadow-xl hover:shadow-2xl focus:ring-red-300"
+        className="fixed bottom-6 right-6 z-50 inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-red-500/30 active:scale-95 cursor-pointer hover:scale-110 hover:-translate-y-1 bg-linear-to-r from-red-500 to-orange-500 text-white p-4 rounded-full shadow-lg hover:shadow-red-500/40"
         aria-label="Emergency help"
       >
         <FaPhoneAlt className="w-6 h-6" />
