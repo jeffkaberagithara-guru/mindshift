@@ -45,7 +45,7 @@ export function CrisisModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300">
+    <div className="fixed inset-0 z-9999 flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-gray-900/60 backdrop-blur-md"
@@ -97,7 +97,7 @@ export function CrisisModal({ isOpen, onClose }) {
                       {resource.phone && (
                         <a
                           href={`tel:${resource.phone}`}
-                          className="flex-1 min-w-[120px] inline-flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md"
+                          className="flex-1 min-w-30 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md"
                         >
                           <FaPhoneAlt className="w-4 h-4" />
                           <span className="text-lg whitespace-nowrap">{resource.phone}</span>
@@ -106,7 +106,7 @@ export function CrisisModal({ isOpen, onClose }) {
                       {resource.text && (
                         <a
                           href={`sms:${resource.phone || ''}?body=${resource.text}`}
-                          className="flex-1 min-w-[120px] inline-flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 active:scale-[0.98] transition-all"
+                          className="flex-1 min-w-30 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 active:scale-[0.98] transition-all"
                         >
                           <FaComment className="w-4 h-4" />
                           <span className="whitespace-nowrap">{resource.text}</span>
