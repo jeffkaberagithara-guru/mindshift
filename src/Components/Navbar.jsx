@@ -8,7 +8,13 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCrisisOpen, setIsCrisisOpen] = useState(false);
   const [theme, setTheme] = useLocalStorage('theme', 'light');
+  const [isLogoAnimating, setIsLogoAnimating] = useState(false);
   const location = useLocation();
+
+  const triggerLogoAnimation = () => {
+    setIsLogoAnimating(true);
+    setTimeout(() => setIsLogoAnimating(false), 1000);
+  };
 
   const navLinks = [
     { name: 'Home', path: '/', icon: '🏠' },
@@ -32,10 +38,10 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group shrink-0">
+          <Link to="/" className="flex items-center gap-2 group shrink-0" onClick={triggerLogoAnimation}>
             <div className="relative">
-              <div className="w-10 h-10 bg-linear-to-br from-blue-400 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-md">
-                <span className="text-white font-bold text-xl">M</span>
+              <div className={`w-10 h-10 bg-linear-to-br from-blue-400 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center transition-all duration-500 shadow-md ${isLogoAnimating ? 'rotate-[360deg] scale-110 ring-4 ring-purple-500/30' : 'group-hover:scale-105'}`}>
+                <span className="text-white font-bold text-xl select-none">M</span>
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-gray-900"></div>
               </div>
             </div>
@@ -84,15 +90,17 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
             <button
               onClick={toggleTheme}
-              className={`inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer hover:scale-105 w-9 h-9 border border-gray-700 bg-gray-800 text-purple-400 shadow-sm hover:shadow-md hover:border-purple-300`}
+              className={`inline-flex items-center justify-center font-medium rounded-full transition-all duration-500 focus:outline-none focus:ring-4 focus:ring-purple-500/20 active:scale-90 cursor-pointer hover:scale-110 w-10 h-10 border shadow-lg ${theme === 'light' ? 'bg-amber-100/50 border-amber-200 text-amber-600 hover:bg-amber-200' : 'bg-indigo-950 border-indigo-800 text-indigo-300 hover:bg-indigo-900'}`}
               aria-label="Toggle theme"
               title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
             >
-              {theme === 'light' ? (
-                <FaSun className="w-4 h-4" />
-              ) : (
-                <FaMoon className="w-4 h-4" />
-              )}
+              <div className={`relative w-full h-full flex items-center justify-center transition-transform duration-500 ${theme === 'dark' ? 'rotate-180' : 'rotate-0'}`}>
+                {theme === 'light' ? (
+                  <FaSun className="w-5 h-5 animate-pulse-slow" />
+                ) : (
+                  <FaMoon className="w-5 h-5" />
+                )}
+              </div>
             </button>
 
             <button
