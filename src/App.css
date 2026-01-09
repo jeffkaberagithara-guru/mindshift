@@ -1,29 +1,6 @@
 @import "tailwindcss";
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    overflow-x: hidden;
-    @apply antialiased text-gray-900 bg-white transition-colors duration-300;
-  }
-
-  /* Improve scrollbar aesthetics */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 rounded-full hover:bg-gray-400 transition-colors;
-  }
-
-  .dark ::-webkit-scrollbar-thumb {
-    @apply bg-gray-700 hover:bg-gray-600;
-  }
+body {
+  overflow-x: hidden;
+  @apply antialiased text-gray-900 bg-white dark:bg-[#020617] dark:text-white transition-colors duration-300;
 }
