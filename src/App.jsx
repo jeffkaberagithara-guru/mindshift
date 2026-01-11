@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import CrisisButton from './components/CrisisButton.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 import Home from './pages/Home.jsx';
 import LearnMore from './pages/LearnMore.jsx';
 import Resources from './pages/Resources.jsx';
@@ -19,6 +20,7 @@ function App() {
   return (
 
     <div className="min-h-dvh flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <ScrollToTop />
       <Navbar />
       <main className="grow">
         <Routes>
