@@ -1,6 +1,1 @@
 @import "tailwindcss";
-
-body {
-  overflow-x: hidden;
-  @apply antialiased text-gray-900 bg-white dark:bg-[#020617] dark:text-white transition-colors duration-300;
-}
