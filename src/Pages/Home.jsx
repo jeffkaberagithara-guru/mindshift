@@ -1,5 +1,5 @@
 import { FaHeartbeat, FaUserMd, FaBrain, FaHandsHelping } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import ResourceCard from '../components/ResourceCard';
 import MoodTracker from '../components/MoodTracker';
 
@@ -57,10 +57,16 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer hover:scale-[1.02] bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500 text-base sm:text-lg px-6 py-3.5 sm:px-8 sm:py-4">
+              <button
+                onClick={() => navigate('/tools/mood-tracker')}
+                className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer hover:scale-[1.02] bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl focus:ring-blue-500 text-base sm:text-lg px-6 py-3.5 sm:px-8 sm:py-4"
+              >
                 Check in with yourself
               </button>
-              <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer hover:scale-[1.02] bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-600 focus:ring-gray-300 dark:focus:ring-gray-600 text-base sm:text-lg px-6 py-3.5 sm:px-8 sm:py-4">
+              <button
+                onClick={() => navigate('/crisis')}
+                className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer hover:scale-[1.02] bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-600 focus:ring-gray-300 dark:focus:ring-gray-600 text-base sm:text-lg px-6 py-3.5 sm:px-8 sm:py-4"
+              >
                 I need help now →
               </button>
             </div>
@@ -83,24 +89,24 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
-                <button
-                  onClick={() => navigate(feature.link)}
+                <Link
+                  to={feature.link}
                   className={`inline-flex items-center justify-center w-12 h-12 rounded-lg mb-4 bg-linear-to-br ${feature.color === 'blue' ? 'from-blue-500 to-blue-600' : feature.color === 'green' ? 'from-green-500 to-green-600' : feature.color === 'purple' ? 'from-purple-500 to-purple-600' : 'from-orange-500 to-orange-600'} text-white cursor-pointer hover:scale-110 transition-transform duration-200`}
                 >
                   {feature.icon}
-                </button>
+                </Link>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                   {feature.description}
                 </p>
-                <a
-                  href={feature.link}
-                  className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+                <Link
+                  to={feature.link}
+                  className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
                 >
                   Learn more →
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -117,7 +123,10 @@ export default function Home() {
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">How are you feeling today?</h2>
                   <p className="text-gray-600 dark:text-gray-300">Track your mood and see patterns over time</p>
                 </div>
-                <button className="mt-4 md:mt-0 inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer bg-linear-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg px-5 py-2.5 text-sm">
+                <button
+                  onClick={() => navigate('/tools/mood-tracker')}
+                  className="mt-4 md:mt-0 inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer bg-linear-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg px-5 py-2.5 text-sm"
+                >
                   View History
                 </button>
               </div>
@@ -187,10 +196,16 @@ export default function Home() {
                 Join thousands who have found support and understanding here.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer hover:scale-[1.02] bg-white text-blue-600 hover:bg-gray-100 shadow-lg hover:shadow-xl text-base sm:text-lg px-6 py-3.5 sm:px-8 sm:py-4">
+                <button
+                  onClick={() => navigate('/settings')}
+                  className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer hover:scale-[1.02] bg-white text-blue-600 hover:bg-gray-100 shadow-lg hover:shadow-xl text-base sm:text-lg px-6 py-3.5 sm:px-8 sm:py-4"
+                >
                   Create Account
                 </button>
-                <button className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer hover:scale-[1.02] bg-transparent border-2 border-white text-white hover:bg-white/10 text-base sm:text-lg px-6 py-3.5 sm:px-8 sm:py-4">
+                <button
+                  onClick={() => navigate('/learn-more')}
+                  className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 cursor-pointer hover:scale-[1.02] bg-transparent border-2 border-white text-white hover:bg-white/10 text-base sm:text-lg px-6 py-3.5 sm:px-8 sm:py-4"
+                >
                   Learn More
                 </button>
               </div>
