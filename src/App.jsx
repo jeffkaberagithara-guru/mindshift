@@ -1,8 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useRef, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import CrisisButton from './components/CrisisButton.jsx';
-import ScrollToTop from './components/ScrollToTop.jsx';
+
 import Home from './pages/Home.jsx';
 import LearnMore from './pages/LearnMore.jsx';
 import Resources from './pages/Resources.jsx';
@@ -13,6 +14,17 @@ import AssessmentTool from './components/AssessmentTool.jsx';
 import UserSettings from './pages/UserSettings.jsx';
 import { useLocalStorage } from './hooks/useLocalStorage.jsx';
 import './App.css';
+
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   useLocalStorage('theme', 'light');
